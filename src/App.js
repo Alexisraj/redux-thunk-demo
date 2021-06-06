@@ -1,23 +1,33 @@
-import "./App.css";
+import React, { useEffect } from "react";
+import Header from "./components/header";
+import Content from "./components/content";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import About from "./components/about";
+import Contact from "./components/contact";
 
-function App() {
+const App = (props) => {
+  useEffect(() => {
+    // if (!props.books) {
+    //   props.fetchBooks(1);
+    // }
+  }, [props]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            component={() => <Content {...props} />}
+          ></Route>
+          <Route path="/about" exact component={About}></Route>
+          <Route path="/contact" exact component={Contact}></Route>
+        </Switch>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
