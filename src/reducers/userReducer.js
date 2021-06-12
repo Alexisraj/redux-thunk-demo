@@ -10,6 +10,11 @@ const initial_state = {
 };
 const userReducer = (state = initial_state, action) => {
   switch (action.type) {
+    case AC.UPDATE_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
     case AC.SELECTED_USER:
       return {
         ...state,

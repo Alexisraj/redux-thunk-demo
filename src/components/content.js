@@ -3,7 +3,16 @@ import "./content.css";
 import GridLoader from "react-spinners/GridLoader";
 
 const Content = (props) => {
-  return <>test</>;
+  useEffect(() => {
+    if (!props.users) {
+      props.fetchUsers();
+    }
+  }, []);
+  return (
+    <>
+      <div>yrdy</div>
+    </>
+  );
 };
 
 export default Content;

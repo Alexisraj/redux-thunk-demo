@@ -1,26 +1,64 @@
 import * as AC from "../constants/userContstants";
+import axios from "axios";
 
-// export function fetchBooks(pageNo) {
-//   return {
-//     pageNo,
-//     type: AC.BOOK_FETCH_REQUEST,
-//   };
-// }
-// export function AddToCart(bookId) {
-//   return {
-//     type: AC.ADD_TO_CART,
-//     bookId: bookId,
-//   };
-// }
-// export function removeInCart(bookId) {
-//   return {
-//     type: AC.REMOVE_FROM_CART,
-//     bookId: bookId,
-//   };
-// }
-// export function fetchBooksSuccess(books) {
-//   return { type: AC.BOOK_FETCH_SUCCESS, books };
-// }
-// export function fetchBooksFailure(message) {
-//   return { type: AC.BOOK_FETCH_FAILURE, message };
-// }
+export function fetchUsers() {
+  return function (dispatch) {
+    return axios
+      .get("http://localhost:3000/users")
+      .then((response) => response.data)
+      .then((data) => {
+        console.log("return users", data);
+        dispatch({
+          type: AC.UPDATE_USERS,
+          payload: data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+}
+export function getBasicInfo(id) {
+  return function (dispatch) {
+    return axios
+      .get(`http://localhost:3000/basic?id=${id}`)
+      .then((response) => response.data)
+      .then((data) => dispatch({ type: AC.UPDATE_BASIC, payload: data }))
+      .catch((err) => console.log(err));
+  };
+}
+export function getSkillInfo(id) {
+  return function (dispatch) {
+    return axios
+      .get(`http://localhost:3000/skills?id=${id}`)
+      .then((response) => response.data)
+      .then((data) => dispatch({ type: AC.UPDATE_UESR_SKILL, payload: data }))
+      .catch((err) => console.log(err));
+  };
+}
+export function getAddressInfo(id) {
+  return function (dispatch) {
+    return axios
+      .get(`http://localhost:3000/address?id=${id}`)
+      .then((response) => response.data)
+      .then((data) => dispatch({ type: AC.UPDATE_USER_ADDRESS, payload: data }))
+      .catch((err) => console.log(err));
+  };
+}
+export function getLocationInfo(id) {
+  return function (dispatch) {
+    return axios
+      .get(`http://localhost:3000/localtion?id=${id}`)
+      .then((response) => response.data)
+      .then((data) =>
+        setTimeout(
+          dispatch({ type: AC.UPDATE_USER_LOCATION, payload: data }),
+          4000
+        )
+      )
+      .catch((err) => console.log(err));
+  };
+}
+export function clearSelection() {
+  return {
+    type: AC.CLEAR_OLD_DATA,
+  };
+}

@@ -1,9 +1,3 @@
-export const GET_USERS = "GET_USERS";
-export const GET_BASIC = "GET_BASIC";
-export const GET_USER_ADDRESS = "GET_USER_ADDRESS";
-export const GET_UESR_SKILL = "GET_UESR_SKILL";
-export const GET_USER_LOCATION = "GET_USER_LOCATION";
-
 export const SELECTED_USER = "SELECTED_USER";
 export const UPDATE_USERS = "UPDATE_USERS";
 export const UPDATE_BASIC = "UPDATE_BASIC";
