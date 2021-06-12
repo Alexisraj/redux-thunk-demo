@@ -62,3 +62,6 @@ export function clearSelection() {
     type: AC.CLEAR_OLD_DATA,
   };
 }
+export function updateSelectedUser(id) {
+  return { type: AC.SELECTED_USER, payload: id };
+}

@@ -20,7 +20,8 @@ const mapDispathToProps = (dispatch) => {
     getBasic: (id) => dispatch(actions.getBasicInfo(id)),
     getLocation: (id) => dispatch(actions.getLocationInfo(id)),
     getSkill: (id) => dispatch(actions.getSkillInfo(id)),
-    updateSelectedUser: () => dispatch(actions.clearSelection()),
+    updateSelectedUser: (id) => dispatch(actions.updateSelectedUser(id)),
+    clearSelection: () => dispatch(actions.clearSelection()),
   };
 };
 const UserContainer = connect(mapStateToProps, mapDispathToProps)(App);
