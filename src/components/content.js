@@ -23,6 +23,7 @@ const Content = (props) => {
       if (!props.location) props.getLocation(initID);
       if (!props.address) props.getAddress(initID);
     }
+    setActiveTab(props.selectedUser);
   }, []);
 
   const onSelectUser = (id) => {

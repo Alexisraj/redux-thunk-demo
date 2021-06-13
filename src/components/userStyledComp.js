@@ -15,8 +15,7 @@ export const CSection = styled.div`
   height: 100px;
   width: 100%;
   color: blue;
-  padding: 20px 20px;
-  border: 0 0 1px 0 solid #000;
+  border-bottom: 1px solid #ccc;
 `;
 export const Loader = styled.div`
   position: fixed;
