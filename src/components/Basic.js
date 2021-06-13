@@ -13,7 +13,7 @@ const FormatContent = (basic) => {
           <span>Intrested In:</span>
           <ol>
             {basic.intrested.map((i) => (
-              <li>{i}</li>
+              <li style={{ listStyle: "none" }}>{i}</li>
             ))}
           </ol>
         </div>

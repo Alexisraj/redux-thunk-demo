@@ -1,6 +1,11 @@
 import * as AC from "../constants/userContstants";
 import axios from "axios";
 
+const delayPromise = (time) => (data) =>
+  new Promise((resolve) => {
+    setTimeout(() => resolve(data), time);
+  });
+
 export function fetchUsers() {
   return function (dispatch) {
     return axios
@@ -20,10 +25,9 @@ export function getBasicInfo(id) {
   return function (dispatch) {
     return axios
       .get(`http://localhost:3000/basic?id=${id}`)
+      .then(delayPromise(1000))
       .then((response) => response.data)
-      .then((data) =>
-        setTimeout(dispatch({ type: AC.UPDATE_BASIC, payload: data }), 2000)
-      )
+      .then((data) => dispatch({ type: AC.UPDATE_BASIC, payload: data }))
       .catch((err) => console.log(err));
   };
 }
@@ -31,12 +35,9 @@ export function getSkillInfo(id) {
   return function (dispatch) {
     return axios
       .get(`http://localhost:3000/skills?id=${id}`)
+      .then(delayPromise(2000))
       .then((response) => response.data)
-      .then(
-        (data) =>
-          setTimeout(dispatch({ type: AC.UPDATE_UESR_SKILL, payload: data })),
-        4000
-      )
+      .then((data) => dispatch({ type: AC.UPDATE_UESR_SKILL, payload: data }))
       .catch((err) => console.log(err));
   };
 }
@@ -44,12 +45,9 @@ export function getAddressInfo(id) {
   return function (dispatch) {
     return axios
       .get(`http://localhost:3000/address?id=${id}`)
+      .then(delayPromise(4000))
       .then((response) => response.data)
-      .then(
-        (data) =>
-          setTimeout(dispatch({ type: AC.UPDATE_USER_ADDRESS, payload: data })),
-        6000
-      )
+      .then((data) => dispatch({ type: AC.UPDATE_USER_ADDRESS, payload: data }))
       .catch((err) => console.log(err));
   };
 }
@@ -57,12 +55,10 @@ export function getLocationInfo(id) {
   return function (dispatch) {
     return axios
       .get(`http://localhost:3000/location?id=${id}`)
+      .then(delayPromise(3000))
       .then((response) => response.data)
       .then((data) =>
-        setTimeout(
-          dispatch({ type: AC.UPDATE_USER_LOCATION, payload: data }),
-          8000
-        )
+        dispatch({ type: AC.UPDATE_USER_LOCATION, payload: data })
       )
       .catch((err) => console.log(err));
   };

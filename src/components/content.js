@@ -20,7 +20,6 @@ const Content = (props) => {
       props.updateSelectedUser(initID);
       if (!props.basic) props.getBasic(initID);
       if (!props.skill) props.getSkill(initID);
-
       if (!props.location) props.getLocation(initID);
       if (!props.address) props.getAddress(initID);
     }
