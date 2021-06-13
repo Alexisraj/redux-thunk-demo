@@ -14,14 +14,26 @@ const Content = (props) => {
     if (!props.users) {
       props.fetchUsers();
     }
-    if (props.users?.length > 0)
-      props.updateSelectedUser(getInitialActive(props.users));
+    if (props.users?.length > 0 && !props.selectedUser) {
+      const initID = getInitialActive(props.users);
+      setActiveTab(initID);
+      props.updateSelectedUser(initID);
+      if (!props.basic) props.getBasic(initID);
+      if (!props.skill) props.getSkill(initID);
+
+      if (!props.location) props.getLocation(initID);
+      if (!props.address) props.getAddress(initID);
+    }
   }, []);
 
   const onSelectUser = (id) => {
     props.clearSelection();
-    setActiveTab(id);
     props.updateSelectedUser(id);
+    setActiveTab(id);
+    props.getBasic(id);
+    props.getSkill(id);
+    props.getLocation(id);
+    props.getAddress(id);
   };
   return (
     <>
@@ -44,13 +56,13 @@ const Content = (props) => {
               <Basic {...props} />
             </S.CSection>
             <S.CSection>
-              <Skills />
+              <Skills {...props} />
             </S.CSection>
             <S.CSection>
-              <Location />
+              <Location {...props} />
             </S.CSection>
             <S.CSection>
-              <Address />
+              <Address {...props} />
             </S.CSection>
           </div>
         </div>

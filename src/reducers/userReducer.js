@@ -51,7 +51,6 @@ const userReducer = (state = initial_state, action) => {
         skill: false,
         address: false,
         location: false,
-        selectedUser: false,
       };
     }
     default:

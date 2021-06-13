@@ -1,19 +1,26 @@
 import ClipLoader from "react-spinners/ClipLoader";
 import * as S from "./userStyledComp";
 
+const FormatContent = (address) => {
+  return address?.length > 0 ? (
+    <>
+      <span>Residing at:</span>
+      {address.map((s) => (
+        <span>{s.address}</span>
+      ))}
+    </>
+  ) : (
+    "No Address found"
+  );
+};
 const Address = (props) => {
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ width: "50%" }}>
-        <S.SubHeader>Address</S.SubHeader>
-      </div>
-      <div style={{ width: "50%" }}>
-        {props.address ? (
-          <S.SubHeader>Location</S.SubHeader>
-        ) : (
-          <ClipLoader color={"#36d7b7"} />
-        )}
-      </div>
+    <div>
+      {props.address ? (
+        FormatContent(props.address)
+      ) : (
+        <ClipLoader color={"#36d7b7"} />
+      )}
     </div>
   );
 };

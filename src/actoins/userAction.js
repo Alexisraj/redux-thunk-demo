@@ -21,7 +21,9 @@ export function getBasicInfo(id) {
     return axios
       .get(`http://localhost:3000/basic?id=${id}`)
       .then((response) => response.data)
-      .then((data) => dispatch({ type: AC.UPDATE_BASIC, payload: data }))
+      .then((data) =>
+        setTimeout(dispatch({ type: AC.UPDATE_BASIC, payload: data }), 2000)
+      )
       .catch((err) => console.log(err));
   };
 }
@@ -30,7 +32,11 @@ export function getSkillInfo(id) {
     return axios
       .get(`http://localhost:3000/skills?id=${id}`)
       .then((response) => response.data)
-      .then((data) => dispatch({ type: AC.UPDATE_UESR_SKILL, payload: data }))
+      .then(
+        (data) =>
+          setTimeout(dispatch({ type: AC.UPDATE_UESR_SKILL, payload: data })),
+        4000
+      )
       .catch((err) => console.log(err));
   };
 }
@@ -39,19 +45,23 @@ export function getAddressInfo(id) {
     return axios
       .get(`http://localhost:3000/address?id=${id}`)
       .then((response) => response.data)
-      .then((data) => dispatch({ type: AC.UPDATE_USER_ADDRESS, payload: data }))
+      .then(
+        (data) =>
+          setTimeout(dispatch({ type: AC.UPDATE_USER_ADDRESS, payload: data })),
+        6000
+      )
       .catch((err) => console.log(err));
   };
 }
 export function getLocationInfo(id) {
   return function (dispatch) {
     return axios
-      .get(`http://localhost:3000/localtion?id=${id}`)
+      .get(`http://localhost:3000/location?id=${id}`)
       .then((response) => response.data)
       .then((data) =>
         setTimeout(
           dispatch({ type: AC.UPDATE_USER_LOCATION, payload: data }),
-          4000
+          8000
         )
       )
       .catch((err) => console.log(err));
