@@ -63,6 +63,16 @@ export function getLocationInfo(id) {
       .catch((err) => console.log(err));
   };
 }
+export function getContactInfo(id) {
+  return function (dispatch) {
+    return axios
+      .get(`http://localhost:3000/contact?id=${id}`)
+      .then(delayPromise(3000))
+      .then((response) => response.data)
+      .then((data) => dispatch({ type: AC.UPDATE_USER_CONTACT, payload: data }))
+      .catch((err) => console.log(err));
+  };
+}
 export function clearSelection() {
   return {
     type: AC.CLEAR_OLD_DATA,

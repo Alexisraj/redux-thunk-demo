@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     skill: state.userStore.skill,
     address: state.userStore.address,
     location: state.userStore.location,
+    contact: state.userStore.contact,
     selectedUser: state.userStore.selectedUser,
   };
 };
@@ -20,6 +21,7 @@ const mapDispathToProps = (dispatch) => {
     getBasic: (id) => dispatch(actions.getBasicInfo(id)),
     getLocation: (id) => dispatch(actions.getLocationInfo(id)),
     getSkill: (id) => dispatch(actions.getSkillInfo(id)),
+    getUserContact: (id) => dispatch(actions.getContactInfo(id)),
     updateSelectedUser: (id) => dispatch(actions.updateSelectedUser(id)),
     clearSelection: () => dispatch(actions.clearSelection()),
   };

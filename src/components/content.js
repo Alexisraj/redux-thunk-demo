@@ -6,6 +6,7 @@ import Basic from "./Basic";
 import Skills from "./Skill";
 import Location from "./Location";
 import Address from "./Address";
+import UserContact from "./userContact";
 
 const Content = (props) => {
   const getInitialActive = (users) => users && users.length > 0 && users[0].id;
@@ -22,6 +23,7 @@ const Content = (props) => {
       if (!props.skill) props.getSkill(initID);
       if (!props.location) props.getLocation(initID);
       if (!props.address) props.getAddress(initID);
+      if (!props.contact) props.getUserContact(initID);
     }
     setActiveTab(props.selectedUser);
   }, []);
@@ -34,6 +36,7 @@ const Content = (props) => {
     props.getSkill(id);
     props.getLocation(id);
     props.getAddress(id);
+    props.getUserContact(id);
   };
   return (
     <>
@@ -63,6 +66,9 @@ const Content = (props) => {
             </S.CSection>
             <S.CSection>
               <Address {...props} />
+            </S.CSection>
+            <S.CSection>
+              <UserContact {...props} />
             </S.CSection>
           </div>
         </div>

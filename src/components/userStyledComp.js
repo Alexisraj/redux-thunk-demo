@@ -6,6 +6,7 @@ export const userTab = styled.li`
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
   font-weight: ${(p) => (p.isActive ? "bold" : "")};
+  text-decoration: ${(p) => (p.isActive ? "underline" : "")};
   cursor: pointer;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;

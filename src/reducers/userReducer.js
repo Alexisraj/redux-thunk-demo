@@ -3,6 +3,7 @@ import * as AC from "../constants/userContstants";
 const initial_state = {
   users: false,
   basic: false,
+  contact: false,
   skill: false,
   address: false,
   location: false,
@@ -44,6 +45,12 @@ const userReducer = (state = initial_state, action) => {
         location: action.payload,
       };
     }
+    case AC.UPDATE_USER_CONTACT: {
+      return {
+        ...state,
+        contact: action.payload,
+      };
+    }
     case AC.CLEAR_OLD_DATA: {
       return {
         ...state,
@@ -51,6 +58,7 @@ const userReducer = (state = initial_state, action) => {
         skill: false,
         address: false,
         location: false,
+        contact: false,
       };
     }
     default:
